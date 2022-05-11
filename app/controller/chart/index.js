@@ -5,6 +5,7 @@ exports.create = async (ctx) => {
 
   if (options && typeof options === 'object') {
     try {
+      ctx.set('content-type', 'application/octet-stream');
       ctx.body = await screenshot(options, viewport);
     } catch (error) {
       ctx.body = {
