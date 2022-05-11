@@ -8,7 +8,14 @@ FROM alpine:3.13
 RUN apk add ca-certificates
 
 # 安装依赖包，如需其他依赖包，请到alpine依赖包管理(https://pkgs.alpinelinux.org/packages?name=php8*imagick*&branch=v3.13)查找。
-RUN apk add --update --no-cache nodejs npm yarn
+RUN apk add --update --no-cache nodejs yarn
+
+# 安装puppeteer所需依赖
+RUN apk add --no-cache chromium nss freetype harfbuzz ttf-freefont
+
+# Tell Puppeteer to skip installing Chrome. We'll be using the installed package.
+ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true \
+    PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium-browser
 
 # # 指定工作目录
 WORKDIR /app
@@ -20,7 +27,7 @@ WORKDIR /app
 COPY . /app
 
 # npm 源，选用国内镜像源以提高下载速度
-RUN npm config set registry https://mirrors.cloud.tencent.com/npm/
+# RUN npm config set registry https://mirrors.cloud.tencent.com/npm/
 # RUN npm config set registry https://registry.npm.taobao.org/
 
 # npm 安装依赖
