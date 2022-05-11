@@ -1,10 +1,12 @@
 {
-  "name": "wxcloudrun-koa",
+  "name": "wxcloud-koa",
   "version": "1.0.0",
   "description": "微信云托管 koa 框架模板",
-  "main": "index.js",
+  "main": "app/index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node app/index.js",
+    "dev": "NODE_ENV=development PORT=5001 nodemon app/index.js",
+    "prettier": "prettier --write '**/*.{js,ts,css,json,html}'"
   },
   "author": "",
   "license": "Apache-2.0",
@@ -19,5 +21,18 @@
     "koa-router": "^10.1.1",
     "mysql2": "^2.3.3",
     "sequelize": "^6.13.0"
+  },
+  "devDependencies": {
+    "husky": "^4.3.0",
+    "lint-staged": "^10.0.8",
+    "prettier": "^2.1.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "**/*.{js,ts,css,json,html}": "prettier --write"
   }
 }

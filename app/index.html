@@ -110,25 +110,25 @@
   <script>
     init();
     function init() {
-      $.ajax("/api/count", {
-        method: "get",
+      $.ajax('/api/count', {
+        method: 'get',
       }).done(function (res) {
         if (res && res.data !== undefined) {
-          $(".count-number").html(res.data);
+          $('.count-number').html(res.data);
         }
       });
     }
     function set(action) {
-      $.ajax("/api/count", {
-        method: "POST",
-        contentType: "application/json; charset=utf-8",
-        dataType: "json",
+      $.ajax('/api/count', {
+        method: 'POST',
+        contentType: 'application/json; charset=utf-8',
+        dataType: 'json',
         data: JSON.stringify({
           action: action,
         }),
       }).done(function (res) {
         if (res && res.data !== undefined) {
-          $(".count-number").html(res.data);
+          $('.count-number').html(res.data);
         }
       });
     }

@@ -1,0 +1,9 @@
+const MYSQL_USERNAME = 'root';
+const MYSQL_PASSWORD = '123456@Qwe';
+const MYSQL_ADDRESS = '127.0.0.1:3306';
+
+module.exports = {
+  MYSQL_USERNAME,
+  MYSQL_PASSWORD,
+  MYSQL_ADDRESS,
+};
