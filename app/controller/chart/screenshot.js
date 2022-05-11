@@ -22,10 +22,6 @@ const screenshot = async (chartOptions, _viewport) => {
       options: JSON.stringify(chartOptions),
     });
 
-    // await ejs.renderFile(path.join(__dirname, './chart.html'), {
-    //   options: JSON.stringify(chartOptions),
-    //   viewport,
-    // });
     // 添加启动参数'--no-sandbox', '--disable-setuid-sandbox'
     // 解决Linux环境下"no use sandbox"报错
     const browser = await puppeteer.launch({

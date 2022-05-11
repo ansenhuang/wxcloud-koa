@@ -11,8 +11,7 @@ RUN apk add ca-certificates
 RUN apk add --update --no-cache nodejs yarn
 
 # 安装puppeteer所需依赖
-RUN apk add --no-cache chromium nss freetype harfbuzz ttf-freefont
-
+RUN apk add --no-cache chromium
 # Tell Puppeteer to skip installing Chrome. We'll be using the installed package.
 ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true \
     PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium-browser
