@@ -50,6 +50,12 @@ router.get("/api/wx_openid", async (ctx) => {
   }
 });
 
+router.get("/api/user", async (ctx) => {
+  ctx.body = {
+    user: 'username',
+  };
+});
+
 const app = new Koa();
 app
   .use(logger())
