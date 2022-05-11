@@ -14,7 +14,10 @@ RUN apk add --update --no-cache nodejs npm yarn
 WORKDIR /app
 
 # 拷贝包管理文件
-COPY package*.json /app
+# COPY package*.json /app
+
+# 将当前目录（dockerfile所在目录）下所有文件都拷贝到工作目录下（.gitignore中的文件除外）
+COPY . /app
 
 # npm 源，选用国内镜像源以提高下载速度
 RUN npm config set registry https://mirrors.cloud.tencent.com/npm/
@@ -22,9 +25,6 @@ RUN npm config set registry https://mirrors.cloud.tencent.com/npm/
 
 # npm 安装依赖
 RUN yarn install
-
-# 将当前目录（dockerfile所在目录）下所有文件都拷贝到工作目录下（.gitignore中的文件除外）
-COPY . /app
 
 # 执行启动命令.
 # 写多行独立的CMD命令是错误写法！只有最后一行CMD命令会被执行，之前的都会被忽略，导致业务报错。
