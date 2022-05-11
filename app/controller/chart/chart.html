@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chart</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      #chart-container {
+        position: relative;
+        height: 100vh;
+        overflow: hidden;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="chart-container"></div>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script> -->
+    <script>
+      <%- echartsJs %>
+    </script>
+    <script>
+      var dom = document.getElementById('chart-container');
+      var chart = echarts.init(dom, null, {
+        renderer: 'canvas',
+        useDirtyRect: false,
+      });
+      var options;
+
+      try {
+        options = JSON.parse('<%- options %>');
+      } catch (error) {}
+
+      if (options && typeof options === 'object') {
+        chart.setOption(options);
+      }
+
+      window.addEventListener('resize', chart.resize);
+    </script>
+  </body>
+</html>

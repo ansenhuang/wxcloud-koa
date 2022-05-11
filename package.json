@@ -16,11 +16,13 @@
   },
   "dependencies": {
     "body-parser": "^1.19.1",
+    "ejs": "^3.1.7",
     "koa": "^2.13.4",
     "koa-bodyparser": "^4.3.0",
     "koa-logger": "^3.2.1",
     "koa-router": "^10.1.1",
     "mysql2": "^2.3.3",
+    "puppeteer": "^13.7.0",
     "sequelize": "^6.13.0"
   },
   "devDependencies": {

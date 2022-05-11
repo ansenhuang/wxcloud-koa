@@ -2,9 +2,10 @@ const fs = require('fs');
 const path = require('path');
 const Router = require('koa-router');
 const CountController = require('./controller/count');
+const ChartController = require('./controller/chart');
 
 const router = new Router();
-const homePage = fs.readFileSync(path.join(__dirname, 'index.html'), 'utf-8');
+const homePage = fs.readFileSync(path.join(__dirname, './index.html'), 'utf-8');
 
 // 首页
 router.get('/', async (ctx) => {
@@ -22,6 +23,9 @@ router.get('/api/wx_openid', async (ctx) => {
 router.post('/api/count', CountController.post);
 // 获取计数
 router.get('/api/count', CountController.get);
+
+// 生成图表
+router.post('/api/chart/create', ChartController.create);
 
 // 导出router
 module.exports = router;
