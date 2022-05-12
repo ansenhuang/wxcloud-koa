@@ -6,7 +6,11 @@ exports.create = async (ctx) => {
   if (options && typeof options === 'object') {
     try {
       // ctx.set('content-type', 'application/octet-stream');
-      ctx.body = await screenshot(options, viewport);
+      const image = await screenshot(options, viewport);
+      ctx.body = {
+        code: 0,
+        data: image,
+      };
     } catch (error) {
       ctx.body = {
         code: -1,
